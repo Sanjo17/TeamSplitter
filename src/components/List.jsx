@@ -6,7 +6,7 @@ function List({list, remove,clear}){
     
     
     return(
-        <div className="plist">
+        <div className="plist" id="plist">
             {   
             
             list.length>0? list.map((p,id)=>(
