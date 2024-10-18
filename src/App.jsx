@@ -5,6 +5,7 @@ import Header from "./components/Header"
 import InputFeild from "./components/InputFeild";
 import List from "./components/List";
 import SortedList from "./components/SortedList";
+import Button from "./components/Button";
 
 
 
@@ -14,6 +15,7 @@ function App() {
   const [playerlist,setplayerlist] = useState([]);
   const [teamA,setTeamA] = useState([]);
   const [teamB,setTeamB] = useState([]);
+  const [isOpen,setOpen] = useState(true);  
 
   
 
@@ -33,18 +35,47 @@ function App() {
         return array;
     }
   }
+  function randNum(min,max){
+     return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
 
   function sortTeam(){
     if(playerlist.length>1){
-    let temp = shuffle(playerlist);
-    console.log("temp list "+temp);
-    console.log("player list "+playerlist);
-    let list_len = temp.length; //4
-    let teamA_len = list_len/2; //2
+      
+      let t = [...playerlist]
+    let temp = shuffle(t);
+
+    if(temp.length%2!=0 ){
+      temp.push(" - ");
+    }
+    console.log("first ",temp);  
+    let tA = [];
+    let tB = [];
+    let temp_len = temp.length;
+    while(temp_len>=0){
+      let n = randNum(0,temp_len-1);
+      console.log("random num1 : "+n);
+      
+      tA.push(temp[n]);
+      temp_len--;
+      temp = temp.filter((_,id)=>(id!=n));
+      console.log("first filter ",temp)
+      n = randNum(0,temp_len-1);
+      console.log("random num2 : "+n);
+      tB.push(temp[n]);
+      temp_len--;
+      temp = temp.filter((_,id)=>(id!=n));
+      console.log("second filter ",temp)
+
+
+
+      
+    }
+    setTeamA(tA);
+    setTeamB(tB);
+
     
-    setTeamA(temp.slice(0,teamA_len));
-    setTeamB(temp.slice(teamA_len,list_len));
-    // setTeamA((prevlistA)=>temp.slice(0,teamA_len));
+    temp = [];
     
     
     
@@ -54,6 +85,9 @@ function App() {
       console.log("add players")
     }
 
+  }
+  function showPlayerList(){
+    setOpen(!isOpen);
   }
 
   function addplayertolist(player){
@@ -76,7 +110,11 @@ function App() {
     <div className="main">
     <Header/>  
     <InputFeild onSubmit = {addplayertolist} idd = {sortTeam}/> 
-    <List list = {playerlist} remove = {removeplayers} clear={clearAll}/> 
+    <div className="playerslist-dropdown">
+      {playerlist.length>0?<Button title={isOpen?"Hide":"show"} onSumit={showPlayerList}/>:null}
+    { isOpen?<List list = {playerlist} remove = {removeplayers} clear={clearAll}/>:null }
+    </div>
+
     <div className="teamlistcontainer">
     {(teamA.length && teamB.length) > 0 ? <SortedList A = {teamA} B={teamB}/>:""}
     </div>

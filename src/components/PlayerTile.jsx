@@ -7,7 +7,7 @@ function PlayerTile({player = "Player",remove,id}){
             <div className='tile-items'>
         <h4>{
         player!=""?player.toUpperCase():"player"}</h4>
-        <Button title='x'  onSumit={()=>remove(id)} bg='orange'/>
+        <Button title='x' padding='6px ' onSumit={()=>remove(id)} bg='orange'/>
         </div>
         </div>
     );

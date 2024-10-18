@@ -4,6 +4,7 @@ function PlayersList({team,players=[""]}){
    
     return(
         <div className="playerlist">
+            
             <h1>Team {team}</h1>
             {players.map((p,index)=>(
                 <h3 key={index}>{p}</h3>

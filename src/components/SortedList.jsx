@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function SortedList({A,B}){
     return(
         <>
-        <PlayersList team = 'A'  players = {A}/>
+        <PlayersList team = "A"  players = {A}/>
         <PlayersList team = 'B'  players = {B}/>
         </>
     );
