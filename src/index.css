@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Lexend+Deca:wght@100..900&family=Metal+Mania&family=Nova+Round&display=swap');
 body{
    margin: 0;
 
-   background-color: antiquewhite;
+   background-color: #A2D2DF;
 
 }
+.iceland-regular {
+    font-family: "Iceland", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  .nova-round-regular {
+    font-family: "Nova Round", system-ui;
+    font-weight: 900;
+    font-style: normal;
+  }
 
 header{
     text-align: center;
@@ -18,6 +29,17 @@ header{
 
     
 }
+.lexend-deca-t {
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+.metal-mania-regular {
+    font-family: "Metal Mania", system-ui;
+    font-weight:bolder;
+    font-style: normal;
+  }
 h1,h3,h4{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -48,13 +70,14 @@ h1,h3,h4{
 .playertile{
     margin: 2px;
     max-width: fit-content;
-    background-color: blueviolet;
-    color: aliceblue;
+    background-color: #cef6bd;
+    color: black;
     display: inline-block;
     vertical-align: top;    
     max-height: fit-content;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    border: 1px solid black;
     
       
     
@@ -80,8 +103,8 @@ footer{
 
 .playerlist{
     border: 1px solid rgb(0, 0, 0);
-    background-color: rgb(109, 234, 7);
-    color: aliceblue;
+    background-color: #E4C087;
+    color: rgb(42, 32, 32);
     padding: 20px;
     margin: 10px;
     text-align: center;
@@ -93,6 +116,7 @@ input[type="text"]{
     padding: 10px;
     font-size: larger;
     border: 2px solid black;
+    background-color: white;
     
 }
 .button{

@@ -7,7 +7,7 @@ function PlayersList({team,players=[""]}){
             
             <h1>Team {team}</h1>
             {players.map((p,index)=>(
-                <h3 key={index}>{p}</h3>
+                <h3 key={index} className='nova-round-regular'>{p}</h3>
             ))}
 
         </div>

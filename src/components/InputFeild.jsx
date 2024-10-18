@@ -22,10 +22,10 @@ function InputFeild({onSubmit,idd}){
     
     return(
         <div>
-            <label htmlFor="input"><h2>Enter the Team members</h2></label>
+            <label htmlFor="input"><h2 className="lexend-deca-t">Enter the Team members</h2></label>
             <input type="text" id="input" onChange={setup} value={playername}></input>
             <Button onSumit={()=>handlebtnclick(playername)} title={'add'} />
-            <Button title={'Itto'} onSumit={()=>idd()}/>
+            <Button title={'Itto'} onSumit={()=>idd()} bg="#D2A4A4"/>
             
             
         </div>

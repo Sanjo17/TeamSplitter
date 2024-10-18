@@ -48,6 +48,7 @@ function App() {
     if(temp.length%2!=0 ){
       temp.push(" - ");
     }
+    
     console.log("first ",temp);  
     let tA = [];
     let tB = [];
@@ -111,7 +112,7 @@ function App() {
     <Header/>  
     <InputFeild onSubmit = {addplayertolist} idd = {sortTeam}/> 
     <div className="playerslist-dropdown">
-      {playerlist.length>0?<Button title={isOpen?"Hide":"show"} onSumit={showPlayerList}/>:null}
+      {playerlist.length>0?<Button title={isOpen?"Hide":"show"} onSumit={showPlayerList} bg={isOpen?"red":"#cef6bd"}/>:null}
     { isOpen?<List list = {playerlist} remove = {removeplayers} clear={clearAll}/>:null }
     </div>
 
