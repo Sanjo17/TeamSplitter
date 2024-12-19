@@ -2,7 +2,7 @@
 
 A simple app for splitting a group of members to 2 teams. 
 
-version: 0.0
+version: 0.1
 
-Made with Vite + React
+
 
