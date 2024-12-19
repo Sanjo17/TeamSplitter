@@ -1,92 +1,37 @@
 
-import {useState } from "react";
+import { useState } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header"
 import InputFeild from "./components/InputFeild";
 import List from "./components/List";
 import SortedList from "./components/SortedList";
 import Button from "./components/Button";
-
-
+import { TeamContext } from "./context/TeamContext";
 
 
 function App() {
+  // const teamContext = useContext(TeamContext);
 
   const [playerlist,setplayerlist] = useState([]);
-  const [teamA,setTeamA] = useState([]);
-  const [teamB,setTeamB] = useState([]);
+  const[finalList,setFinalList] = useState([]);
   const [isOpen,setOpen] = useState(true);  
-
   
-
-  function shuffle(array) {
-    let currentIndex = array.length;
-  
-    // While there remain elements to shuffle...
-    while (currentIndex != 0) {
-  
-      // Pick a remaining element...
-      let randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
-        return array;
-    }
+  const sortTeam2 = () => {
+    
+    let temp = [...playerlist];
+    if(temp.length>1){
+      if(temp.length%2!=0){
+        temp.push("no player");
+      }
+      for(let i=temp.length-1;i>0;i--){
+        let j = Math.floor(Math.random()*(i+1));
+        [temp[j],temp[i]] = [temp[i],temp[j]];
+      }
+      setFinalList(temp);
   }
-  function randNum(min,max){
-     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
+  
 
-  function sortTeam(){
-    if(playerlist.length>1){
-      
-      let t = [...playerlist]
-    let temp = shuffle(t);
-
-    if(temp.length%2!=0 ){
-      temp.push(" - ");
-    }
-    
-    console.log("first ",temp);  
-    let tA = [];
-    let tB = [];
-    let temp_len = temp.length;
-    while(temp_len>=0){
-      let n = randNum(0,temp_len-1);
-      console.log("random num1 : "+n);
-      
-      tA.push(temp[n]);
-      temp_len--;
-      temp = temp.filter((_,id)=>(id!=n));
-      console.log("first filter ",temp)
-      n = randNum(0,temp_len-1);
-      console.log("random num2 : "+n);
-      tB.push(temp[n]);
-      temp_len--;
-      temp = temp.filter((_,id)=>(id!=n));
-      console.log("second filter ",temp)
-
-
-
-      
-    }
-    setTeamA(tA);
-    setTeamB(tB);
-
-    
-    temp = [];
-    
-    
-    
-    console.log(teamA,teamB);
-    }
-    else{
-      console.log("add players")
-    }
-
-  }
   function showPlayerList(){
     setOpen(!isOpen);
   }
@@ -104,23 +49,36 @@ function App() {
   }
   function clearAll(){
     setplayerlist([]);
-    setTeamA([]);
-    setTeamB([]);
+    setFinalList([]);
   }
   return(
+    <TeamContext.Provider value={[playerlist,setplayerlist,sortTeam2]}>
+    <>
     <div className="main">
-    <Header/>  
-    <InputFeild onSubmit = {addplayertolist} idd = {sortTeam}/> 
-    <div className="playerslist-dropdown">
-      {playerlist.length>0?<Button title={isOpen?"Hide":"show"} onSumit={showPlayerList} bg={isOpen?"red":"#cef6bd"}/>:null}
-    { isOpen?<List list = {playerlist} remove = {removeplayers} clear={clearAll}/>:null }
+      <Header/>  
+      <InputFeild onSubmit = {addplayertolist} idd = {sortTeam2}/> 
+      
+      <div className="teamSection">
+      
+          <div className="playerslist-dropdown">
+            {playerlist.length>0?<Button title={isOpen?"Hide":"show"} onSumit={showPlayerList} bg={isOpen?"red":"#006400"}/>:null}
+            { isOpen?<List list = {playerlist} remove = {removeplayers} clear={clearAll}/>:null }
+            
+          </div>
+ 
+          <div className="teamlistcontainer">
+            {(finalList.length) > 0 ?
+            <SortedList list={finalList}/> :""}
+            
+          </div>
+        
+      </div>
     </div>
-
-    <div className="teamlistcontainer">
-    {(teamA.length && teamB.length) > 0 ? <SortedList A = {teamA} B={teamB}/>:""}
-    </div>
+    <div className="footer">
     <Footer/>
-    </div>
+  </div>
+  </>
+  </TeamContext.Provider>
  );
 }
 

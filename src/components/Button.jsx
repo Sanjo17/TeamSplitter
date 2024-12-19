@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function Button({title,onSumit,padding='10px',fontsize='larger',bg='#F6EFBD'}){
+function Button({title,onSumit,padding='10px',fontsize='larger',bg='#98FB98'}){
 
     let style = {
         padding : padding,

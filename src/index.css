@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Iceland&family=Lexend+Deca:wght@100..900&family=Metal+Mania&family=Nova+Round&display=swap');
+:root{
+    --primary:#90EE90;
+    --secondary: #32CD32;
+    --light: #98FB98;
+    --dark:  #006400;
+}
+
 body{
    margin: 0;
 
-   background-color: #A2D2DF;
+   background-color: var(--primary);
 
 }
 .iceland-regular {
@@ -25,15 +32,48 @@ header{
 .main{
     
     text-align: center;
+    min-height: 90vh;
+    background-color: var(--primary);  
+}
+.navbar{
+    display: flex;
     
+    justify-content: center;
+    background-color: var(--primary);
+}
+.nav-items{
+    display: flex;
+    justify-content: end;
+    
+    width: 45%;
+    padding: 10px;
+}
+.nav-items button{
+    padding: 0;
+    margin: 0;
+    padding: 5px;
+    height: fit-content;
+    background-color: var(--secondary);
+    color: white;
+    font-size: small;
+}
 
+.nav-head{
+   
+    width: 55%;
+    justify-items: end;
+}
+.playerslist-dropdown{
     
 }
+
+body{margin: 0;}
 .lexend-deca-t {
     font-family: "Lexend Deca", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    color: var(--dark)  ;
   }
 .metal-mania-regular {
     font-family: "Metal Mania", system-ui;
@@ -99,11 +139,54 @@ footer{
     font-weight: 600;
     
 }
+.options{
+    float: right;
+    display: inline;
+    position: absolute;
+    z-index: 1;
+    max-width: 50%;
+    max-height: 500px;
+    background-color: var(--secondary);
+    padding: 2px;
+    border: 1px solid black;
+    animation-duration: 2ms;
+    overflow-y: auto;
+    
+
+}
+.expbtn{
+    background-color: var(--dark);
+    color: var(--light);
+}
+.teams{
+    
+    margin: 5px;
+    
+    padding: 5px;
+}
+.team{
+    background-color: var(--primary);
+    padding: 2px;
+    margin: 5px;
+    border-radius: 5px;
+}
+#addteambtn{
+    background-color: var(--dark);
+    color: var(--light);
+    padding: 5px;
+    margin: 5px;
+}
+.options  button{
+    padding: 5px;
+    background-color: red;
+    margin: 2px;
+
+}
 
 
 .playerlist{
     border: 1px solid rgb(0, 0, 0);
-    background-color: #E4C087;
+    background-color: var(--secondary);
     color: rgb(42, 32, 32);
     padding: 20px;
     margin: 10px;
@@ -128,5 +211,11 @@ input[type="text"]{
 }
 .button:hover{
     background-color: aqua;
+
+}
+.nav-items p{
+    font-size: x-small;
+    padding: 2px;
+    font-weight: lighter;
 
 }

@@ -15,7 +15,7 @@ function List({list, remove,clear}){
                 
                
             )):"Add Players"}
-            {list.length>0 ? <Button title="Clear all" onSumit={()=>clear()}/>: ""}
+            {list.length>0 ? <Button title="Clear all" onSumit={()=>clear()} bg='red'/>: ""}
         </div>
     );
 }
